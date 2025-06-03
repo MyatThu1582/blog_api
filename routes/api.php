@@ -33,6 +33,7 @@ Route::middleware(['auth:api'])->group(function(){
     Route::get('categories', [CategoryController::class, 'all']);
 
     //Post
+    Route::get('post',[PostController::class, 'index']);
     Route::post('post', [PostController::class, 'create']);
 
 });

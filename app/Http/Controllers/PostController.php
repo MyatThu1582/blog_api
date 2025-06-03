@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseHelper;
+use App\Http\Resources\PostResource;
 use App\Models\category;
 use App\Models\Media;
 use App\Models\Post;
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function index(Request $request){
+        $post = Post::orderByDesc('created_at')->paginate(10);
+        return ResponseHelper::success(PostResource::collection($post));
+    }
+
     public function create(Request $request){
         $request->validate(
             [
