@@ -2,13 +2,12 @@
 
 namespace App\Http\Resources;
 
-use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
-class PostResource extends JsonResource
+class OwnPostResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +17,6 @@ class PostResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
             'owner_name' => $this->user->name,
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y h:i:s A'),
             'created_at_readable' => Carbon::parse($this->created_at)->diffForHumans(),

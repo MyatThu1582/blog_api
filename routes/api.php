@@ -28,6 +28,7 @@ Route::middleware(['auth:api'])->group(function(){
     
     // Profile
     Route::get('profile', [ProfileController::class, 'index']);
+    Route::get('profile/post', [ProfileController::class, 'posts']);
     
     // Category
     Route::get('categories', [CategoryController::class, 'all']);
@@ -35,5 +36,6 @@ Route::middleware(['auth:api'])->group(function(){
     //Post
     Route::get('post',[PostController::class, 'index']);
     Route::post('post', [PostController::class, 'create']);
+    Route::get('post/{id}', [PostController::class, 'show']);
 
 });
